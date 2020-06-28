@@ -8,11 +8,11 @@
     <h1>Simulação de chamada:</h1>
     <br>
     <br>
-    <form>
+    <form action="/resultado" method="get">
       <label>
         DDD de origem:
       </label>
-      <select>
+      <select name="ddd_origem">
         {% for ddd in ddds %}
           <option value="{{ ddd|safe}}">
             {{ ddd|safe}}
@@ -24,7 +24,7 @@
       <label>
         DDD de destino:
       </label>
-      <select>
+      <select name="ddd_destino">
         {% for ddd in ddds %}
           <option value="{{ ddd|safe}}">
             {{ ddd|safe}}
@@ -38,24 +38,22 @@
       </label>
       <br>
       <br>
-      <input>
+      <input type="number" name="minutos" value="1" min="1">
       <br>
       <br>
       <label>
         Selecione o plano:
       </label>
-      <select>
-        <option value="fm30">Fale Mais 30</option>
-        <option value="fm60">Fale Mais 60</option>
-        <option value="fm120">Fale Mais 120</option>
+      <select name="plano">
+        {% for plano in planos %}
+          <option value="{{ plano[1]|safe}}">
+            {{ plano[0]|safe}}
+          </option>
+        {% endfor %}
       </select>
       <br>
-      <br><br><br><br><br><br><br><br>
-      {% for ddd in ddds %}
-        <div>
-          {{ ddd|safe}}
-        </div>
-      {% endfor %}
+      <br>
+      <button type="submit">Enviar</button>
     </form>
   </body>
 </html>

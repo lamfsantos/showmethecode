@@ -1,5 +1,5 @@
 import sqlite3
-import os
+#mport os
 from sqlite3 import Error
 
 # path = os.path.dirname(os.path.abspath(__file__))
@@ -19,7 +19,6 @@ def create_connection(db_file):
 def find_all_ddds():
     conn = create_connection(database)
 
-    print(database)
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT origem FROM tarifas")
 
@@ -32,3 +31,22 @@ def find_all_ddds():
     conn.close()
 
     return listString
+
+def find_valor(ddd_origem, ddd_destino):
+    conn = create_connection(database)
+
+    cur = conn.cursor()
+    cur.execute("SELECT valor FROM tarifas WHERE origem = ? AND destino = ?", (ddd_origem, ddd_destino))
+
+    rows = cur.fetchall()
+
+    if(len(rows)>0):
+        stringFloat = "".join(str(rows[0]))
+        stringFloatFormated = stringFloat.replace('(','').replace(')', '').replace(',', '')
+        valor = float(stringFloatFormated)
+
+        conn.close()
+
+        return valor
+
+    return rows
