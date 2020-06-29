@@ -7,7 +7,7 @@ from context import cvc_service
 
 class TesteCVC(unittest.TestCase):
     def teste_valor_esperado(self):
-        result = {'sem_plano': 190.0, 'com_plano': 146.3}
+        result = {'sem_plano': '190.00', 'com_plano': '146.30'}
         self.assertEqual(cvc_service.calcular_valor_chamada('011', '016', 100, 30), result)
 
     def teste_plano_inexistente(self):

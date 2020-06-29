@@ -11,6 +11,9 @@ def index():
     ddd_destino = request.args.get('ddd_destino')
     plano = request.args.get('plano')
 
+    if minutos is None or ddd_origem is None or ddd_destino is None or plano is None:
+        return render_template("dados_faltantes.html")
+
     if ddd_origem == ddd_destino:
         return render_template("ddds_iguais.html")
 
