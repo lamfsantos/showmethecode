@@ -3,57 +3,55 @@
   <head>
     <meta charset="utf-8">
     <title>Teste Vizir</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   </head>
   <body>
-    <h1>Simulação de chamada:</h1>
-    <br>
-    <br>
-    <form action="/resultado" method="get">
-      <label>
-        DDD de origem:
-      </label>
-      <select name="ddd_origem">
-        {% for ddd in ddds %}
-          <option value="{{ ddd|safe}}">
-            {{ ddd|safe}}
-          </option>
-        {% endfor %}
-      </select>
-      <br>
-      <br>
-      <label>
-        DDD de destino:
-      </label>
-      <select name="ddd_destino">
-        {% for ddd in ddds %}
-          <option value="{{ ddd|safe}}">
-            {{ ddd|safe}}
-          </option>
-        {% endfor %}
-      </select>
-      <br>
-      <br>
-      <label>
-        Quantos minutos deseja falar?:
-      </label>
-      <br>
-      <br>
-      <input type="number" name="minutos" value="1" min="1">
-      <br>
-      <br>
-      <label>
-        Selecione o plano:
-      </label>
-      <select name="plano">
-        {% for plano in planos %}
-          <option value="{{ plano[1]|safe}}">
-            {{ plano[0]|safe}}
-          </option>
-        {% endfor %}
-      </select>
-      <br>
-      <br>
-      <button type="submit">Enviar</button>
-    </form>
+    <div class="search-box">
+    		<h2> Simulação de chamada </h2>
+    		<form name="search" action="/resultado" method="get">
+          <div class="user-box">
+             <label>Quantos minutos deseja falar?</label>
+             <br>
+             <input type="number" name="minutos" value="1" min="1">
+          </div>
+    			 <div class="user-box">
+             <label>DDD Origem:</label>
+             <br>
+             <select name="ddd_origem">
+                 {% for ddd in ddds %}
+                   <option value="{{ ddd|safe}}">
+                     {{ddd|safe}}
+                   </option>
+                 {% endfor %}
+             </select>
+    			 </div>
+           <div class="user-box">
+             <label>DDD Destino:</label>
+             <br>
+              <select name="ddd_destino">
+                 {% for ddd in ddds %}
+                   <option value="{{ ddd|safe}}">
+                    {{ddd|safe}}
+                   </option>
+                 {% endfor %}
+             </select>
+    			 </div>
+           <div class="user-box">
+             <label>Selecione o plano:</label>
+             <br>
+             <select name="plano">
+               {% for plano in planos %}
+                 <option value="{{ plano[1]|safe}}">
+                   {{ plano[0]|safe}}
+                 </option>
+               {% endfor %}
+             </select>
+    			 </div>
+           <button class="btn btn-light" type="submit">Enviar</button>
+    		 </form>
+    	</div>
   </body>
 </html>

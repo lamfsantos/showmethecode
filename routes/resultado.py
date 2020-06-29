@@ -6,9 +6,9 @@ resultado_blueprint = Blueprint("resultado", __name__, static_folder="static", t
 
 @resultado_blueprint.route('/resultado')
 def index():
+    minutos = request.args.get('minutos')
     ddd_origem = request.args.get('ddd_origem')
     ddd_destino = request.args.get('ddd_destino')
-    minutos = request.args.get('minutos')
     plano = request.args.get('plano')
 
     if ddd_origem == ddd_destino:

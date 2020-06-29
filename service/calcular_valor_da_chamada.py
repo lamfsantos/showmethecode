@@ -33,8 +33,8 @@ def calcular_valor_chamada(ddd_origem, ddd_destino, minutos, plano):
         valor_com_plano += valor_com_plano*0.10
 
     dict = {
-        'sem_plano': valor_sem_plano,
-        'com_plano': valor_com_plano
+        'sem_plano': "{:.2f}".format(valor_sem_plano),
+        'com_plano': "{:.2f}".format(valor_com_plano)
     }
 
     return dict
